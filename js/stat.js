@@ -11,6 +11,11 @@ var BAR_WIDTH = 40;
 var BAR_GAP = 50;
 var TEXT_HEIGHT = 25;
 var barHeight = GISTOGRAMMA_HEIGHT - TEXT_HEIGHT * 2;
+var GISTOGRAMMA_COLOR = '#000000';
+var GISTOGRAMMA_FONT = '16px PT Mono';
+var GISTOGRAMMA_BASELINE = 'hanging';
+var timeTopGap = CLOUD_Y + BAR_GAP * 1.7;
+var nameTopGap = timeTopGap + GISTOGRAMMA_HEIGHT;
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -27,21 +32,23 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
+var renderText = function (ctx, color, font, baseline, text) {
+  ctx.fillStyle = color;
+  ctx.font = font;
+  ctx.textBaseline = baseline;
+  ctx.fillText(text, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP);
+};
+
 window.renderStatistics = function (ctx, names, times) {
+  var maxTime = getMaxElement(times);
+
   renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_SHADOW_GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
-  ctx.fillStyle = '#000000';
-  ctx.font = '16px PT Mono';
-  ctx.textBaseline = 'hanging';
-  ctx.fillText('Ура вы победили!', CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP);
-  ctx.fillText('Список результатов:', CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP * 2);
-
-  var maxTime = getMaxElement(times);
+  renderText(ctx, GISTOGRAMMA_COLOR, GISTOGRAMMA_FONT, GISTOGRAMMA_BASELINE, 'Ура вы победили!');
+  renderText(ctx, GISTOGRAMMA_COLOR, GISTOGRAMMA_FONT, GISTOGRAMMA_BASELINE, 'Список результатов:');
 
   for (var i = 0; i < names.length; i++) {
     var gistLeftGap = CLOUD_X + CLOUD_GAP + (BAR_WIDTH + BAR_GAP) * i;
-    var timeTopGap = CLOUD_Y + BAR_GAP * 1.7;
-    var nameTopGap = timeTopGap + GISTOGRAMMA_HEIGHT;
     var barNewHeight = (barHeight * times[i]) / maxTime;
     ctx.fillText(Math.floor(times[i]), gistLeftGap, timeTopGap);
     ctx.fillStyle = 'hsl(255, ' + (100 * Math.random()) + '%, 50%)';
