@@ -35,5 +35,7 @@ var eyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
 
 for (var i = 0; i < 4; i++) {
   var el = template.cloneNode(true);
+  el.querySelector('.setup-similar-label').textContent = names[i];
+  el.querySelector('.wizard-coat').style.fill = coatColor[i];
   list.appendChild(el);
 }
