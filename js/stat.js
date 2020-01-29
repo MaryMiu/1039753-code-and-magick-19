@@ -21,7 +21,7 @@ var TIME_Y = CLOUD_Y + BAR_GAP * 1.7;
 var NAME_Y = TIME_Y + GISTOGRAMMA_HEIGHT;
 var BLUE_H = 255;
 var BLUE_S = 100;
-var BLUE_L = 50%;
+var BLUE_L = 50;
 var COLOR_ME = 'rgba(255, 0, 0, 1)';
 
 var renderCloud = function (ctx, x, y, color) {
@@ -60,7 +60,7 @@ window.renderStatistics = function (ctx, names, times) {
     var barHeight = (BAR_HEIGHT * times[i]) / maxTime;
     var barY = GISTOGRAMMA_HEIGHT - barHeight + TIME_Y - TEXT_HEIGHT;
     ctx.fillText(Math.floor(times[i]), barX, TIME_Y);
-    ctx.fillStyle = 'hsl(' + BLUE_H, ' + ' + BLUE_S * Math.random() + '%,' + BLUE_L + '%)';
+    ctx.fillStyle = 'hsl(' + BLUE_H + ',' + BLUE_S * Math.random() + '%,' + BLUE_L + '%)';
     if (names[i] === 'Вы') {
       ctx.fillStyle = COLOR_ME;
     }
