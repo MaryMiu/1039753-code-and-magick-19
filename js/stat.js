@@ -23,7 +23,7 @@ var textY = CLOUD_Y + CLOUD_GAP;
 var textY2 = CLOUD_Y + CLOUD_GAP + TEXT_HEIGHT;
 var timeY = CLOUD_Y + BAR_GAP * 1.7;
 var nameY = timeY + GISTOGRAMMA_HEIGHT;
-
+var USER_NAME = 'Вы';
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -61,7 +61,7 @@ window.renderStatistics = function (ctx, names, times) {
     var barY = GISTOGRAMMA_HEIGHT - barDynamicHeight + timeY - TEXT_HEIGHT;
     var colorRandom = 'hsl(' + BLUE_H + ',' + BLUE_S * Math.random() + '%,' + BLUE_L + '%)';
     ctx.fillText(Math.floor(times[i]), barX, timeY);
-    ctx.fillStyle = (names[i] === 'Вы') ? COLOR_DEFAULT : colorRandom;
+    ctx.fillStyle = (names[i] === USER_NAME) ? COLOR_DEFAULT : colorRandom;
     ctx.fillRect(barX, barY, BAR_WIDTH, barDynamicHeight);
     ctx.fillStyle = TEXT_COLOR;
     ctx.fillText(names[i], barX, nameY);
