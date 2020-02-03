@@ -26,11 +26,11 @@ function createRandomWizard() {
 }
 
 function renderWizard(elem) {
-  var template = wizardTemplate.cloneNode(true);
-  template.querySelector('.setup-similar-label').textContent = elem.name;
-  template.querySelector('.wizard-coat').style.fill = elem.coatColor;
-  template.querySelector('.wizard-eyes').style.fill = elem.eyesColor;
-  fragment.appendChild(template);
+  var wizardCloneTemplate = wizardTemplate.cloneNode(true);
+  wizardCloneTemplate.querySelector('.setup-similar-label').textContent = elem.name;
+  wizardCloneTemplate.querySelector('.wizard-coat').style.fill = elem.coatColor;
+  wizardCloneTemplate.querySelector('.wizard-eyes').style.fill = elem.eyesColor;
+  fragment.appendChild(wizardCloneTemplate);
 }
 
 removeClass('.setup', 'hidden');
