@@ -25,12 +25,12 @@ function createRandomWizard() {
   };
 }
 
-function renderWizard(elem, i, arr) {
-  elem = wizardTemplate.cloneNode(true);
-  elem.querySelector('.setup-similar-label').textContent = arr[i].name;
-  elem.querySelector('.wizard-coat').style.fill = arr[i].coatColor;
-  elem.querySelector('.wizard-eyes').style.fill = arr[i].eyesColor;
-  fragment.appendChild(elem);
+function renderWizard(elem) {
+  var template = wizardTemplate.cloneNode(true);
+  template.querySelector('.setup-similar-label').textContent = elem.name;
+  template.querySelector('.wizard-coat').style.fill = elem.coatColor;
+  template.querySelector('.wizard-eyes').style.fill = elem.eyesColor;
+  fragment.appendChild(template);
 }
 
 removeClass('.setup', 'hidden');
