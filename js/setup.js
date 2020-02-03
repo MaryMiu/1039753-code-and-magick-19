@@ -9,8 +9,8 @@ var wizardsCoatColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100
 var wizardsEyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
 var fragment = document.createDocumentFragment();
 
-function removeClass(el, clss) {
-  document.querySelector(el).classList.remove(clss);
+function showBlock(el) {
+  document.querySelector(el).classList.remove('hidden');
 }
 
 function getRandomArbitrary(min, max) {
@@ -33,7 +33,7 @@ function renderWizard(elem) {
   fragment.appendChild(wizardCloneTemplate);
 }
 
-removeClass('.setup', 'hidden');
+showBlock('.setup');
 
 for (var i = 0; i < 4; i++) {
   var wizard = createRandomWizard();
@@ -43,4 +43,4 @@ for (var i = 0; i < 4; i++) {
 wizards.forEach(renderWizard);
 wizardsList.appendChild(fragment);
 
-removeClass('.setup-similar', 'hidden');
+showBlock('.setup-similar');
