@@ -22,11 +22,11 @@ var setupWizardFireballInput = setupWizardFireball.querySelector('[name="firebal
 var setupWizardEyesInput = document.querySelector('[name="eyes-color"]');
 var setupWizardCoatInput = document.querySelector('[name="coat-color"]');
 
-function removeClass(el) {
+function removeElement(el) {
   el.classList.remove('hidden');
 }
 
-function showClass(el) {
+function showElement(el) {
   el.classList.add('hidden');
 }
 
@@ -56,29 +56,29 @@ function renderWizard(elem) {
 
 function documentKeydownHandler(evt) {
   if (evt.key === ESC_KEY) {
-    showClass(setup);
+    showElement(setup);
   }
 }
 
 function openbtnClickHandler() {
-  removeClass(setup);
+  removeElement(setup);
   document.addEventListener('keydown', documentKeydownHandler);
 }
 
 function closebtnClickHandler() {
-  showClass(setup);
+  showElement(setup);
   document.removeEventListener('keydown', documentKeydownHandler);
 }
 
 function openbtnKeydownHandler(evt) {
   if (evt.key === ENTER_KEY) {
-    removeClass(setup);
+    removeElement(setup);
   }
 }
 
 function closebtnKeydownHandler(evt) {
   if (evt.key === ENTER_KEY) {
-    showClass(setup);
+    showElement(setup);
   }
 }
 
@@ -94,7 +94,7 @@ function getRandomFireballColor() {
   return fetchRandomItems(['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']);
 }
 
-removeClass(setup);
+removeElement(setup);
 
 for (var i = 0; i < 4; i++) {
   var wizard = createRandomWizard();
@@ -104,7 +104,7 @@ for (var i = 0; i < 4; i++) {
 wizards.forEach(renderWizard);
 wizardsList.appendChild(fragment);
 
-removeClass(similarWizards);
+removeElement(similarWizards);
 
 document.addEventListener('keydown', documentKeydownHandler);
 setupOpen.addEventListener('click', openbtnClickHandler);
