@@ -1,24 +1,14 @@
 'use strict';
 
 (function () {
-
-  var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
   var wizardsList = document.querySelector('.setup-similar-list');
   var wizards = [];
-  var wizardsNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-  var wizardsSurnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-  var wizardsCoatColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-  var wizardsEyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
   var fragment = document.createDocumentFragment();
   var similarWizards = document.querySelector('.setup-similar');
   var setupwWizard = document.querySelector('.setup-wizard');
   var setupWizardCoat = setupwWizard.querySelector('.wizard-coat');
   var setupWizardEyes = setupwWizard.querySelector('.wizard-eyes');
   var setupWizardFireball = document.querySelector('.setup-fireball-wrap');
-  var setupWizardFireballInput = setupWizardFireball.querySelector('[name="fireball-color"]');
-  var setupWizardEyesInput = document.querySelector('[name="eyes-color"]');
-  var setupWizardCoatInput = document.querySelector('[name="coat-color"]');
-
 
   function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -29,6 +19,10 @@
   }
 
   function createRandomWizard() {
+    var wizardsNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
+    var wizardsSurnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+    var wizardsCoatColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+    var wizardsEyesColor = ['black', 'red', 'blue', 'yellow', 'green'];
     return {
       name: wizardsNames[getRandomArbitrary(0, wizardsNames.length)] + ' ' + wizardsSurnames[getRandomArbitrary(0, wizardsSurnames.length)],
       coatColor: wizardsCoatColor[getRandomArbitrary(0, wizardsCoatColor.length)],
@@ -37,6 +31,7 @@
   }
 
   function renderWizard(elem) {
+    var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
     var wizardCloneTemplate = wizardTemplate.cloneNode(true);
     wizardCloneTemplate.querySelector('.setup-similar-label').textContent = elem.name;
     wizardCloneTemplate.querySelector('.wizard-coat').style.fill = elem.coatColor;
@@ -67,18 +62,21 @@
   window.util.showElement(similarWizards);
 
   setupWizardCoat.addEventListener('click', function () {
+    var setupWizardCoatInput = document.querySelector('[name="coat-color"]');
     var randomColor = getRandomCoatColor();
     setupWizardCoat.style.fill = randomColor;
     setupWizardCoatInput.value = randomColor;
   });
 
   setupWizardEyes.addEventListener('click', function () {
+    var setupWizardEyesInput = document.querySelector('[name="eyes-color"]');
     var randomColor = getRandomEyesColor();
     setupWizardEyes.style.fill = randomColor;
     setupWizardEyesInput.value = randomColor;
   });
 
   setupWizardFireball.addEventListener('click', function () {
+    var setupWizardFireballInput = setupWizardFireball.querySelector('[name="fireball-color"]');
     var randomColor = getRandomFireballColor();
     setupWizardFireball.style.background = randomColor;
     setupWizardFireballInput.value = randomColor;
