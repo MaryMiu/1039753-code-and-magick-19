@@ -10,6 +10,6 @@
     hideElement: function (el) {
       el.classList.add('hidden');
     }
-  }
+  };
 
 })();
