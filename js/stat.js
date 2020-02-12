@@ -1,5 +1,7 @@
 'use strict';
 
+(function () {
+
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
@@ -67,3 +69,5 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillText(names[i], barX, nameY);
   }
 };
+
+})();
