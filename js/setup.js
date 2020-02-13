@@ -64,21 +64,21 @@
   setupWizardCoat.addEventListener('click', function (evt) {
     var setupWizardCoatInput = document.querySelector('[name="coat-color"]');
     var randomColor = getRandomCoatColor();
-    evt.style.fill = randomColor;
+    evt.currentTarget.style.fill = randomColor;
     setupWizardCoatInput.value = randomColor;
   });
 
   setupWizardEyes.addEventListener('click', function (evt) {
     var setupWizardEyesInput = document.querySelector('[name="eyes-color"]');
     var randomColor = getRandomEyesColor();
-    evt.style.fill = randomColor;
+    evt.currentTarget.style.fill = randomColor;
     setupWizardEyesInput.value = randomColor;
   });
 
   setupWizardFireball.addEventListener('click', function (evt) {
     var setupWizardFireballInput = setupWizardFireball.querySelector('[name="fireball-color"]');
     var randomColor = getRandomFireballColor();
-    evt.style.background = randomColor;
+    evt.currentTarget.style.background = randomColor;
     setupWizardFireballInput.value = randomColor;
   });
 
