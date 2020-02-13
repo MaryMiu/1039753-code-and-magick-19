@@ -61,24 +61,24 @@
 
   window.util.showElement(similarWizards);
 
-  setupWizardCoat.addEventListener('click', function () {
+  setupWizardCoat.addEventListener('click', function (evt) {
     var setupWizardCoatInput = document.querySelector('[name="coat-color"]');
     var randomColor = getRandomCoatColor();
-    setupWizardCoat.style.fill = randomColor;
+    evt.style.fill = randomColor;
     setupWizardCoatInput.value = randomColor;
   });
 
-  setupWizardEyes.addEventListener('click', function () {
+  setupWizardEyes.addEventListener('click', function (evt) {
     var setupWizardEyesInput = document.querySelector('[name="eyes-color"]');
     var randomColor = getRandomEyesColor();
-    setupWizardEyes.style.fill = randomColor;
+    evt.style.fill = randomColor;
     setupWizardEyesInput.value = randomColor;
   });
 
-  setupWizardFireball.addEventListener('click', function () {
+  setupWizardFireball.addEventListener('click', function (evt) {
     var setupWizardFireballInput = setupWizardFireball.querySelector('[name="fireball-color"]');
     var randomColor = getRandomFireballColor();
-    setupWizardFireball.style.background = randomColor;
+    evt.style.background = randomColor;
     setupWizardFireballInput.value = randomColor;
   });
 

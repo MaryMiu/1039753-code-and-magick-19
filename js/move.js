@@ -2,7 +2,6 @@
 
 (function () {
 
-  var setup = document.querySelector('.setup');
   var dialogHandle = document.querySelector('.upload');
 
   dialogHandle.addEventListener('mousedown', function (evt) {
@@ -14,6 +13,7 @@
     };
 
     function mouseMoveHandler(moveEvt) {
+      var setup = document.querySelector('.setup');
       moveEvt.preventDefault();
 
       var shift = {
