@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
   var setup = document.querySelector('.setup');
   var form = setup.querySelector('.setup-wizard-form');
@@ -10,7 +12,7 @@
       window.util.hideElement(setup);
       buttonSubmit.textContent = 'Сохранить';
       buttonSubmit.disabled = false;
-    })
+    });
     evt.preventDefault();
-  })
+  });
 })();

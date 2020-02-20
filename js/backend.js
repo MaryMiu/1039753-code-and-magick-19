@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
 
   var URL = 'https://js.dump.academy/code-and-magick/data';
@@ -22,7 +24,7 @@
       onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
 
-    xhr.timeout = 10000; // 10s
+    xhr.timeout = 10000;
 
     xhr.send();
   };
