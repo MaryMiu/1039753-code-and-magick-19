@@ -99,6 +99,6 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  window.backend(successHandler, errorHandler);
+  window.backend.load(successHandler, errorHandler);
 
 })();
