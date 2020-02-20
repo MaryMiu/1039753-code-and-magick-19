@@ -8,7 +8,7 @@
     var buttonSubmit = form.querySelector('.setup-submit');
     buttonSubmit.textContent = 'Данные отправляются...';
     buttonSubmit.disabled = true;
-    window.backend.save(new FormData(form), function (response) {
+    window.backend.save(new FormData(form), function () {
       window.util.hideElement(setup);
       buttonSubmit.textContent = 'Сохранить';
       buttonSubmit.disabled = false;
