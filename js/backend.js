@@ -3,10 +3,7 @@
 (function () {
   window.backend = {
     load: function (onLoad, onError) {
-      var URL = 'https://js.dump.academy/code-and-magick/data';
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'json';
-      xhr.open('GET', URL);
+      var xhr = createXHR('GET', 'https://js.dump.academy/code-and-magick/data');
 
       xhr.addEventListener('load', function () {
         if (xhr.status === 200) {
@@ -28,9 +25,7 @@
       xhr.send();
     },
     save: function (data, onLoad, onError) {
-      var URL = 'https://js.dump.academy/code-and-magick';
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'json';
+      var xhr = createXHR('POST', 'https://js.dump.academy/code-and-magick');
 
       xhr.addEventListener('load', function () {
         if (xhr.status === 200) {
@@ -40,8 +35,15 @@
         }
       });
 
-      xhr.open('POST', URL);
       xhr.send(data);
     }
   };
+
+  function createXHR(method, url) {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.open(method, url);
+    return xhr;
+  }
+
 })();

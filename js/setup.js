@@ -82,7 +82,8 @@
     var fragment = document.createDocumentFragment();
 
     for (var j = 0; j < 4; j++) {
-      fragment.appendChild(renderWizard(trueWizards[j]));
+      var primaryWizards = renderWizard(trueWizards[j]);
+      fragment.appendChild(primaryWizards);
     }
     wizardsList.appendChild(fragment);
   };
