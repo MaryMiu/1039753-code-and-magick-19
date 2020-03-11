@@ -3,7 +3,6 @@
 (function () {
   var wizardsList = document.querySelector('.setup-similar-list');
   var wizards = [];
-  var fragment = document.createDocumentFragment();
   var similarWizards = document.querySelector('.setup-similar');
   var setupwWizard = document.querySelector('.setup-wizard');
   var setupWizardCoat = setupwWizard.querySelector('.wizard-coat');
@@ -34,9 +33,9 @@
     var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
     var wizardCloneTemplate = wizardTemplate.cloneNode(true);
     wizardCloneTemplate.querySelector('.setup-similar-label').textContent = elem.name;
-    wizardCloneTemplate.querySelector('.wizard-coat').style.fill = elem.coatColor;
-    wizardCloneTemplate.querySelector('.wizard-eyes').style.fill = elem.eyesColor;
-    fragment.appendChild(wizardCloneTemplate);
+    wizardCloneTemplate.querySelector('.wizard-coat').style.fill = elem.colorCoat;
+    wizardCloneTemplate.querySelector('.wizard-eyes').style.fill = elem.colorEyes;
+    return wizardCloneTemplate;
   }
 
   function getRandomCoatColor() {
@@ -55,9 +54,6 @@
     var wizard = createRandomWizard();
     wizards.push(wizard);
   }
-
-  wizards.forEach(renderWizard);
-  wizardsList.appendChild(fragment);
 
   window.util.showElement(similarWizards);
 
@@ -81,5 +77,29 @@
     evt.currentTarget.style.background = randomColor;
     setupWizardFireballInput.value = randomColor;
   });
+
+  var successHandler = function (trueWizards) {
+    var fragment = document.createDocumentFragment();
+
+    for (var j = 0; j < 4; j++) {
+      var primaryWizards = renderWizard(trueWizards[j]);
+      fragment.appendChild(primaryWizards);
+    }
+    wizardsList.appendChild(fragment);
+  };
+
+  var errorHandler = function (errorMessage) {
+    var node = document.createElement('div');
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+  };
+
+  window.backend.load(successHandler, errorHandler);
 
 })();
